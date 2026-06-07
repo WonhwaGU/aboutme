@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WonHwa — Fashion Archive</title>
+
+  <style>
+    :root {
+      --bg: #f5f1ea;
+      --surface: #fbf8f3;
+      --text: #111111;
+      --muted: #6d665f;
+      --line: #d9d1c6;
+      --accent: #8b7765;
+      --dark-accent: #2a2622;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: calc(100% - 40px);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(245, 241, 234, 0.92);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 22px 0;
+    }
+
+    .logo {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      padding: 88px 0 64px;
+      align-items: end;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      margin: 0 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 6vw, 86px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    .hero-text {
+      margin: 0;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-side {
+      border-left: 1px solid var(--line);
+      padding-left: 24px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-side p {
+      margin: 0 0 18px;
+    }
+
+    .hero-side strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding: 56px 0;
+    }
+
+    .section-label {
+      margin-bottom: 24px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e8dfd2;
+    }
+
+    .meta {
+      margin-bottom: 10px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card-title {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1.08;
+      font-weight: 400;
+    }
+
+    .desc {
+      margin: 0;
+      font-size: 15px;
+      color: #3a3530;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 24px;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    .panel p {
+      margin: 0;
+      color: #3a3530;
+      font-size: 15px;
+    }
+
+    .quote-band {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 8px;
+    }
+
+    .quote-text {
+      max-width: 820px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .quote-sub {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 0 70px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+      }
+
+      .hero-side {
+        border-left: none;
+        border-top: 1px solid var(--line);
+        padding-left: 0;
+        padding-top: 18px;
+      }
+
+      .projects,
+      .split-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">WonHwa Studio</div>
+
+      <nav class="nav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#direction">Direction</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div>
+        <div class="hero-kicker">Fashion Archive / Visual Portfolio</div>
+        <h1 class="hero-title">A personal world of image, styling, memory, and direction.</h1>
+        <p class="hero-text">
+          A quiet portfolio space for visual research, fashion-related ideas, personal archive,
+          and selected projects. Built to feel editorial, intentional, and evolving over time.
+        </p>
+      </div>
+
+      <div class="hero-side">
+        <p><strong>Focus</strong><br>Fashion communication / visual research / personal archive</p>
+        <p><strong>Current mode</strong><br>Developing archive and future portfolio</p>
+        <p><strong>Approach</strong><br>Minimal, refined, and quietly expressive</p>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-label">Selected Work</div>
+
+      <div class="projects">
+        <article class="card">
+          <img class="thumb" src="https://via.placeholder.com/900x1125?text=Editorial+Study" alt="Editorial Study">
+          <div class="meta">Visual Research</div>
+          <h2 class="card-title">Editorial Mood Study</h2>
+          <p class="desc">
+            A collection of image references, silhouettes, tones, and spatial compositions
+            exploring calm luxury and restrained elegance.
+          </p>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://via.placeholder.com/900x1125?text=Styling+Concept" alt="Styling Concept">
+          <div class="meta">Styling Concept</div>
+          <h2 class="card-title">Soft Structure</h2>
+          <p class="desc">
+            An early concept exploring clean tailoring, muted tones,
+            and understated styling language with a quiet emotional atmosphere.
+          </p>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://via.placeholder.com/900x1125?text=Archive+Object" alt="Archive Object">
+          <div class="meta">Archive / Object</div>
+          <h2 class="card-title">Object and Memory</h2>
+          <p class="desc">
+            A crossover between personal archive and visual storytelling —
+            how objects hold time, identity, and aesthetic attachment.
+          </p>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://via.placeholder.com/900x1125?text=Future+Project" alt="Future Project">
+          <div class="meta">Future Project</div>
+          <h2 class="card-title">Portfolio in Progress</h2>
+          <p class="desc">
+            A space reserved for future work in fashion communication,
+            creative direction, image-making, and research-led presentation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <p class="quote-text">
+        I am interested in aesthetics that feel quiet, precise, and lasting —
+        not loud luxury, but a more intimate kind of visual confidence.
+      </p>
+      <div class="quote-sub">Personal Direction Note</div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-label">About</div>
+
+      <div class="split-section">
+        <div class="panel">
+          <h3>Profile</h3>
+          <p>
+            Hi, I’m WonHwa. This website brings together personal archive, visual references,
+            and the early foundation of a fashion-related portfolio. I’m drawn to image, mood,
+            materiality, and thoughtful presentation.
+          </p>
+        </div>
+
+        <div class="panel" id="direction">
+          <h3>Direction</h3>
+          <p>
+            Over time, this space may expand into selected projects in fashion communication,
+            styling, branding, and creative research. For now, it remains intentionally minimal:
+            a place to collect and shape a visual language.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2026 WonHwa Studio — Fashion Archive
+    </footer>
+
+  </main>
+
+</body>
+</html>
